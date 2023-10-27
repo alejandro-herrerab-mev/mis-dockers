@@ -1,7 +1,7 @@
 {
-  "id": "jhipster",
-  "realm": "jhipster",
-  "displayName": "JHipster",
+  "id": "jhipster_original",
+  "realm": "jhipster_original",
+  "displayName": "JHipster original",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
