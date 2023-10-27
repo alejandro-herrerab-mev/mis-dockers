@@ -3,7 +3,7 @@ version: '3.8'
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:19.0.1
-    command: ['start-dev --spi-theme-default=soi --spi-theme-static-max-age=-1 --spi-theme-cache-themes=false --spi-theme-cache-templates=false --import-realm']
+    command: ['start-dev --health-enabled=true --spi-theme-default=soi --spi-theme-static-max-age=-1 --spi-theme-cache-themes=false --spi-theme-cache-templates=false --import-realm']
     volumes:
       - ../resources/theme:/opt/keycloak/themes
       - ../realm-config:/opt/keycloak/data/import
@@ -19,3 +19,5 @@ services:
     ports:
       - 127.0.0.1:9080:9080
       - 127.0.0.1:9443:9443
+    healthcheck:
+      test: ["CMD-SHELL", " curl --head http://localhost:9080/health/ready | grep -q '200 OK' "]
